@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TextInput, TouchableHighlight } from 'react-native';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { getAuth0IdToken } from '../../config/auth0';
 
 class CreateUser extends Component {
   static propTypes = {
-    createUser: React.PropTypes.func.isRequired,
+    createUser: React.PropTypes.func,
     data: React.PropTypes.object.isRequired,
     navigator: React.PropTypes.object.isRequired,
     profile: React.PropTypes.object,
@@ -17,9 +18,7 @@ class CreateUser extends Component {
 
     console.log(`constructing CreateUser`);
 
-    console.log(`createUser: ${JSON.stringify(props.createUser)}`);
-
-    const emailAddress = props.profile ? props.profile.emailAddress : '';
+    const emailAddress = props.profile ? props.profile.email : '';
     const name = props.profile ? props.profile.name : '';
 
     console.log(`props.profile: ${JSON.stringify(props.profile)}`);
@@ -35,11 +34,11 @@ class CreateUser extends Component {
       idToken: this.props.idToken,
       emailAddress: this.state.emailAddress,
       name: this.state.name,
-    }
+    };
 
     console.log(`about to call createUser mutation, variables: ${JSON.stringify(variables)}`);
 
-    this.props.createUser({ variables })
+    this.props.createUserMutation({ variables })
       .then((response) => {
         this.props.navigator.push({name: 'ActionList'});
       }).catch((e) => {
@@ -49,18 +48,23 @@ class CreateUser extends Component {
   }
 
   render() {
+    console.log(`in CreateUser render`);
     if (this.props.data.loading) {
       return (<View style={styles.container}><Text>Loading</Text></View>);
     }
+    console.log(`past loading, user: ${JSON.stringify(this.props.data.user)}`);
 
     // redirect if user is logged in or did not finish Auth0 Lock dialog
-    if (this.props.data.user || window.localStorage.getItem('auth0IdToken') === null) {
+    if (this.props.data.user || getAuth0IdToken() === null) {
       console.warn('not a new user or already logged in')
       this.props.navigator.pop();
+      return null;
     }
 
+    console.log(`past loading, user: ${JSON.stringify(this.props.data.user)}`);
+
     return (
-      <View style={style.container}>
+      <View style={styles.container}>
         <Text>Just one more step</Text>
         <Text>Email</Text>
         <TextInput
@@ -105,21 +109,21 @@ const styles = StyleSheet.create({
 });
 
 const createUser = gql`
-  mutation ($idToken: String!, $name: String!, $emailAddress: String!){
+  mutation createUser ($idToken: String!, $name: String!, $emailAddress: String!){
     createUser(authProvider: {auth0: {idToken: $idToken}}, name: $name, emailAddress: $emailAddress) {
       id
     }
   }
-`
+`;
 
 const userQuery = gql`
-  query {
+  query getUser {
     user {
       id
     }
   }
-`
+`;
 
-export default graphql(createUser, {name: 'createUser'})(
+export default graphql(createUser, {name: 'createUserMutation'})(
   graphql(userQuery, { options: { forceFetch: true }})(CreateUser)
 )

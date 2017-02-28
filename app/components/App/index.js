@@ -10,13 +10,13 @@ class App extends Component {
     navigator: React.PropTypes.object.isRequired,
   }
 
-  _logout = () => {
-    setAuth0IdToken(null);
-    // do something to reload the app
-  }
-
-  _isLoggedIn = () => {
-    return this.props.data.user;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data.loading) return;
+    if (nextProps.data.user) {
+      this.props.navigator.push({
+        name: 'ActionList',
+      });
+    }
   }
 
   render () {
@@ -24,13 +24,7 @@ class App extends Component {
       return (<View style={styles.container}><Text>Loading</Text></View>);
     }
 
-    if (this._isLoggedIn()) {
-      this.props.navigator.push({
-        name: 'ActionList',
-      });
-    } else {
-      return (<Login navigator={this.props.navigator} />);
-    }
+    return (<Login navigator={this.props.navigator} />);
   }
 }
 

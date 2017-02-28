@@ -10,11 +10,13 @@ networkInterface.use([{
     }
 
     // get the authentication token from local storage if it exists
-    let authToken = getAuth0IdToken();
-    if (authToken) {
-      req.options.headers.authorization = `Bearer ${authToken}`;
-    }
-    next();
+    getAuth0IdToken().then((authToken) => {
+      console.log(`authToken: ${JSON.stringify(authToken)}`);
+      if (authToken) {
+        req.options.headers.authorization = `Bearer ${authToken}`;
+      }
+      next();
+    });
   },
 }]);
 

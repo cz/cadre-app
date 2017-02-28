@@ -18,10 +18,12 @@ export async function getAuth0IdToken() {
   }
 }
 
-export async function setAuth0IdToken(token) {
+export function setAuth0IdToken(token) {
   try {
     console.log(`AsyncStorage setting ${authTokenKey} to ${token}`);
-    await AsyncStorage.setItem(authTokenKey, token);
+    AsyncStorage.setItem(authTokenKey, token);
+    const newToken = getAuth0IdToken();
+    console.log(`token now: ${newToken}`);
   } catch (error) {
     console.error(`Error setting auth0IdToken with value '${token}': ${error}`);
   }
