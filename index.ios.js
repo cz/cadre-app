@@ -1,4 +1,4 @@
 import React, { AppRegistry } from 'react-native';
-import Mobilization from './app';
+import Assemble from './app';
 
-AppRegistry.registerComponent('assemble', () => Mobilization);
+AppRegistry.registerComponent('assemble', () => Assemble);

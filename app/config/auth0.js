@@ -1,11 +1,11 @@
 import { AsyncStorage } from 'react-native';
 
 export const auth0 = {
-  clientId: '8x8P8NdK7hU8xlKjWFSL7Dvmu9jPV84y',
+  clientId: 'WVWnx0kr8lwoKpM3IpNgyMcB51GNLjQs',
   domain: 'mobilization.auth0.com',
 };
 
-const authTokenKey = '@Mobilization:auth0IdToken';
+const authTokenKey = '@Assemble:auth0IdToken';
 
 export async function getAuth0IdToken() {
   try {

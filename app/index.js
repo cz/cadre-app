@@ -11,7 +11,7 @@ import App from './components/App';
 import ActionList from './components/ActionList';
 import CreateUser from './components/CreateUser';
 
-export default class Mobilization extends Component {
+export default class Assemble extends Component {
   renderScene(route, navigator) {
     if (route.name == "App") {
       return <App navigator={navigator} {...route.passProps} />
@@ -59,7 +59,7 @@ var NavigationBarRouteMapper = {
   },
 
   Title(route, navigator, index, navState) {
-    return <Text style={ styles.title }>Mobilization</Text>
+    return <Text style={ styles.title }>Assemble</Text>
   }
 };
 
