@@ -12,9 +12,16 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.loading) return;
+
     if (nextProps.data.user) {
+      const teams = nextProps.data.user.teams;
+      const nextScene = teams.length ? 'ActionList' : 'CreateTeam';
+
       this.props.navigator.push({
-        name: 'ActionList',
+        name: nextScene,
+        passProps: {
+          userId: nextProps.data.user.id,
+        }
       });
     }
   }
@@ -49,6 +56,9 @@ const userQuery = gql`
   query userQuery {
     user {
       id
+      teams {
+        id
+      }
     }
   }
 `;
