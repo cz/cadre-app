@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../config/styles';
+import colors from '../../config/styles/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   scrollView: {
-    backgroundColor: '#6A85B1',
-    height: 300,
+    flex: 1,
   },
 });
 

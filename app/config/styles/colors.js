@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   blue1: '#3d7584',
   blue2: '#4c90a3',
   blue3: '#55a2b8',
@@ -11,5 +11,8 @@ export const colors = {
   sand4: '#d1d2ca',
   sand5: '#dbdcd6',
   sand6: '#e5e6e2',
+  gray: '#4a4a4a',
   white: '#ffffff',
 };
+
+export default colors;

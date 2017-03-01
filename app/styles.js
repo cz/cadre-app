@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors } from './config/styles';
+import colors from './config/styles/colors';
 
 const styles = StyleSheet.create({
   navigator: {
@@ -8,19 +8,20 @@ const styles = StyleSheet.create({
   title: {
     marginTop:4,
     fontSize:16,
-    color: colors.blue2
+    color: colors.gray
   },
   leftNavButtonText: {
-   	fontSize: 18,
+   	fontSize: 16,
     marginLeft:13,
     marginTop:2
   },
   rightNavButtonText: {
-    fontSize: 18,
+    fontSize: 16,
     marginRight:13,
     marginTop:2
   },
   nav: {
+    flex: 1,
     height: 60,
   }
 });
