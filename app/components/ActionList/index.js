@@ -40,7 +40,7 @@ class ActionList extends Component {
     const { allActions } = this.props.data;
 
     return (
-      <View>
+      <View style={styles.container}>
         <ScrollView>
           <View style={styles.scrollView}>
             {allActions.map((action) =>
