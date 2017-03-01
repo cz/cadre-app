@@ -5,9 +5,9 @@ import gql from 'graphql-tag'
 
 class CreateTeam extends Component {
   static propTypes = {
-    navigator: React.PropTypes.object.isRequired,
-    mutate: React.PropTypes.func.isRequired,
-    userId: React.PropTypes.string.isRequired,
+    navigator: PropTypes.object.isRequired,
+    mutate: PropTypes.func.isRequired,
+    userId: PropTypes.string.isRequired,
   };
 
   state = {

@@ -12,6 +12,7 @@ import ActionList from './components/ActionList';
 import CreateUser from './components/CreateUser';
 import CreateTeam from './components/Teams/CreateTeam';
 import ShowTeam from './components/Teams/ShowTeam';
+import CommitAndShare from './components/CommitAndShare';
 
 export default class Assemble extends Component {
   renderScene(route, navigator) {
@@ -29,6 +30,9 @@ export default class Assemble extends Component {
     }
     if (route.name == "ShowTeam") {
       return <ShowTeam navigator={navigator} {...route.passProps} />
+    }
+    if (route.name == "CommitAndShare") {
+      return <CommitAndShare navigator={navigator} {...route.passProps} />
     }
   }
 

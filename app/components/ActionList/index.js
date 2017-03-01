@@ -7,12 +7,23 @@ import ActionCard from '../ActionCard';
 
 class ActionList extends Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     data: PropTypes.shape({
       loading: PropTypes.bool,
       error: PropTypes.object,
       allActions: PropTypes.array,
     }).isRequired,
     teamId: PropTypes.string,
+  }
+
+  commitAndShare = (actionId) => {
+    this.props.navigator.push({
+      name: "CommitAndShare",
+      passProps: {
+        actionId: actionId,
+      },
+      type: "Modal",
+    });
   }
 
   render () {
@@ -32,7 +43,7 @@ class ActionList extends Component {
         <ScrollView>
           <View style={styles.scrollView}>
             {allActions.map((action) =>
-              <ActionCard key={action.id} action={action} />
+              <ActionCard key={action.id} action={action} commitAndShare={this.commitAndShare} />
             )}
           </View>
         </ScrollView>

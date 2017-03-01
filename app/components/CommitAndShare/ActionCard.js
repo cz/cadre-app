@@ -5,11 +5,6 @@ export default class ActionCard extends Component {
 
   static propTypes = {
     action: PropTypes.object.isRequired,
-    commitAndShare: PropTypes.func.isRequired,
-  }
-
-  commitAndShare = () => {
-    this.props.commitAndShare(this.props.action.id);
   }
 
   render () {
@@ -17,18 +12,16 @@ export default class ActionCard extends Component {
 
     return (
       <View style={styles.cardContents}>
+        <Text>Action</Text>
         <Text>{action.title}</Text>
-        <Text>{action._teamsMeta.count} teams have committed</Text>
-        <Button
-          title="Commit and Share"
-          onPress={this.commitAndShare} />
+        <Button title='Tap for details' onPress={() => {}} />
       </View>
     );
   }
 }
 
 const styles = {
-  rowContents: {
+  cardContents: {
     flexDirection: 'row',
     width: 64,
     height: 64,
