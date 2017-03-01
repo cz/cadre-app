@@ -15,14 +15,20 @@ class App extends Component {
 
     if (nextProps.data.user) {
       const teams = nextProps.data.user.teams;
-      const nextScene = teams.length ? 'ActionList' : 'CreateTeam';
-
       this.props.navigator.push({
-        name: nextScene,
+        name: 'ShowTeam',
         passProps: {
-          userId: nextProps.data.user.id,
+          teamId: teams[0].id,
         }
       });
+      // const nextScene = teams.length ? 'Actions' : 'CreateTeam';
+      //
+      // this.props.navigator.push({
+      //   name: nextScene,
+      //   passProps: {
+      //     userId: nextProps.data.user.id,
+      //   }
+      // });
     }
   }
 

@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import Members from './Members';
+
 class ShowTeam extends Component {
   static propTypes = {
     navigator: React.PropTypes.object.isRequired,
@@ -11,16 +13,13 @@ class ShowTeam extends Component {
   };
 
   render() {
-    const { allTeams, loading } = this.props.data;
-    if (loading && !allTeams) { return (<View style={styles.container}><Text>Loading</Text></View>); }
-
-    const team = allTeams[0];
+    const { team, loading } = this.props.data;
+    if (loading && !team) { return (<View style={styles.container}><Text>Loading</Text></View>); }
 
     return (
       <View style={styles.container}>
-        <Text>
-          Here is your team: {team.name} with {team.users.length} users
-        </Text>
+        { false && <Members teamId={this.props.teamId} /> }
+        <Actions teamId={this.props.teamId} />
       </View>
     );
   }
@@ -36,13 +35,9 @@ const styles = StyleSheet.create({
 
 const teamQuery = gql`
   query showTeam ($teamId: ID!) {
-    allTeams(filter: {id: $teamId}) {
+    Team(id: $teamId) {
       id
       name
-      users {
-        id
-        name
-      }
     }
   }
 `;
