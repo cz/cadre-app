@@ -11,4 +11,5 @@ export const colors = {
   sand4: '#d1d2ca',
   sand5: '#dbdcd6',
   sand6: '#e5e6e2',
+  white: '#ffffff',
 };

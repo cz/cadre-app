@@ -4,6 +4,7 @@ import { ScrollView, View, StyleSheet, Text } from 'react-native'
 import gql from 'graphql-tag'
 
 import ActionCard from '../ActionCard';
+import styles from './styles';
 
 class ActionList extends Component {
   static propTypes = {
@@ -51,18 +52,6 @@ class ActionList extends Component {
     )
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  scrollView: {
-    backgroundColor: '#6A85B1',
-    height: 300,
-  },
-});
 
 const ActionsQuery = gql`
   query actionsQuery {

@@ -14,6 +14,8 @@ import CreateTeam from './components/Teams/CreateTeam';
 import ShowTeam from './components/Teams/ShowTeam';
 import CommitAndShare from './components/CommitAndShare';
 
+import styles from './styles';
+
 export default class Assemble extends Component {
   renderScene(route, navigator) {
     if (route.name == "App") {
@@ -74,27 +76,3 @@ var NavigationBarRouteMapper = {
     return <Text style={ styles.title }>Assemble</Text>
   }
 };
-
-const styles = StyleSheet.create({
-  navigator: {
-    flex: 1,
-  },
-  title: {
-    marginTop:4,
-    fontSize:16
-  },
-  leftNavButtonText: {
-   	fontSize: 18,
-    marginLeft:13,
-    marginTop:2
-  },
-  rightNavButtonText: {
-    fontSize: 18,
-    marginRight:13,
-    marginTop:2
-  },
-  nav: {
-    height: 60,
-    backgroundColor: '#efefef'
-  }
-});

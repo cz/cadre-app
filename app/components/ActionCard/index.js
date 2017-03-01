@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { View, Text, Button } from 'react-native'
 
+import styles from './styles';
+
 export default class ActionCard extends Component {
 
   static propTypes = {
@@ -26,11 +28,3 @@ export default class ActionCard extends Component {
     );
   }
 }
-
-const styles = {
-  rowContents: {
-    flexDirection: 'row',
-    width: 64,
-    height: 64,
-  },
-};

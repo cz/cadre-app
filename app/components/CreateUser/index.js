@@ -4,6 +4,8 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { getAuth0IdToken } from '../../config/auth0';
 
+import styles from './styles';
+
 class CreateUser extends Component {
   static propTypes = {
     createUser: React.PropTypes.func,
@@ -90,23 +92,6 @@ class CreateUser extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  signInButton: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#D9DADF',
-    margin: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 const createUser = gql`
   mutation createUser ($idToken: String!, $name: String!, $emailAddress: String!){

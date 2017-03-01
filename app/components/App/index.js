@@ -1,8 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Login from '../Login'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import Login from '../Login';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+
+import styles from './styles';
 
 class App extends Component {
   static propTypes = {
@@ -34,23 +36,6 @@ class App extends Component {
     return (<Login navigator={this.props.navigator} />);
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  signInButton: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#D9DADF',
-    margin: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 const userQuery = gql`
   query userQuery {
