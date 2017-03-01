@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 
 import Auth0Lock from 'react-native-lock';
 import { auth0, setAuth0IdToken } from '../../config/auth0';
+import { colors } from '../../config/styles';
 
 var lock = new Auth0Lock(auth0);
 
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   signInButton: {
     height: 50,
     alignSelf: 'stretch',
-    backgroundColor: '#D9DADF',
+    backgroundColor: colors.blue2,
     margin: 10,
     borderRadius: 5,
     justifyContent: 'center',
