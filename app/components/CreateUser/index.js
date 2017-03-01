@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TextInput, TouchableHighlight } from 'react-nat
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { getAuth0IdToken } from '../../config/auth0';
+import Button from '../Button';
 
 import styles from './styles';
 
@@ -70,23 +71,21 @@ class CreateUser extends Component {
         <Text>Just one more step</Text>
         <Text>Email</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.input}
           onChangeText={(emailAddress) => this.setState({emailAddress})}
           value={this.state.emailAddress}
         />
         <Text>Name</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.input}
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}
         />
         {this.state.name && this.state.emailAddress &&
-          <TouchableHighlight
-            style={styles.signInButton}
-            underlayColor='#949494'
-            onPress={this.createUser}>
-            <Text>Sign Up</Text>
-          </TouchableHighlight>
+          <Button
+            onPress={this.createUser}
+            text="Sign Up">
+          </Button>
         }
       </View>
     );

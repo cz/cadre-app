@@ -5,17 +5,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'stretch',
+    padding: 24,
   },
-  signInButton: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#D9DADF',
-    margin: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  input: {
+    paddingHorizontal: 12,
+    paddingVertical: 24,
+    borderColor: colors.sand6,
+    borderWidth: 1,
+    borderRadius: 2,
+    color: colors.gray,
+  }
 });
 
 export default styles;

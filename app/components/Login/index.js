@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 import Auth0Lock from 'react-native-lock';
 import { auth0, setAuth0IdToken } from '../../config/auth0';
+import Button from '../Button';
 
 import styles from './styles';
 
@@ -37,12 +38,10 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableHighlight
-          style={styles.signInButton}
-          underlayColor='#949494'
-          onPress={this.onLogin}>
-          <Text style={styles.buttonText}>Log In</Text>
-        </TouchableHighlight>
+        <Button
+          onPress={this.onLogin}
+          text="Log In">
+        </Button>
       </View>
     );
   }
