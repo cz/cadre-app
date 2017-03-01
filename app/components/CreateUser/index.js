@@ -31,6 +31,15 @@ class CreateUser extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    // redirect if user is logged in or did not finish Auth0 Lock dialog
+    if (nextProps.data.user || getAuth0IdToken() === null) {
+      console.warn('not a new user or already logged in')
+      this.props.navigator.pop();
+      return;
+    }
+  }
+
   createUser = () => {
     const variables = {
       idToken: this.props.idToken,
@@ -54,16 +63,6 @@ class CreateUser extends Component {
     if (this.props.data.loading) {
       return (<View style={styles.container}><Text>Loading</Text></View>);
     }
-    console.log(`past loading, user: ${JSON.stringify(this.props.data.user)}`);
-
-    // redirect if user is logged in or did not finish Auth0 Lock dialog
-    if (this.props.data.user || getAuth0IdToken() === null) {
-      console.warn('not a new user or already logged in')
-      this.props.navigator.pop();
-      return null;
-    }
-
-    console.log(`past loading, user: ${JSON.stringify(this.props.data.user)}`);
 
     return (
       <View style={styles.container}>
