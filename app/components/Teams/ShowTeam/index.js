@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Members from './Members';
+import ActionList from '../../ActionList';
 
 class ShowTeam extends Component {
   static propTypes = {
@@ -19,7 +20,7 @@ class ShowTeam extends Component {
     return (
       <View style={styles.container}>
         { false && <Members teamId={this.props.teamId} /> }
-        <Actions teamId={this.props.teamId} />
+        <ActionList teamId={this.props.teamId} />
       </View>
     );
   }

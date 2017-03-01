@@ -8,7 +8,7 @@ import networkInterface from './config/networkInterface';
 const client = new ApolloClient({ networkInterface })
 
 import App from './components/App';
-import Actions from './components/Actions';
+import ActionList from './components/ActionList';
 import CreateUser from './components/CreateUser';
 import CreateTeam from './components/Teams/CreateTeam';
 import ShowTeam from './components/Teams/ShowTeam';
